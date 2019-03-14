@@ -32,6 +32,8 @@ public class JPTabItem extends BadgeRelativeLayout {
     private int mIndex;
     // 对应图标的大小
     private int mIconSize;
+    // 图标的padding
+    private int mIconPadding;
     // Tab的上下边距
     private int mMargin;
     //选中颜色(包括底部文字和图标)
@@ -133,6 +135,7 @@ public class JPTabItem extends BadgeRelativeLayout {
             params.topMargin = mMargin;
         mIconView.setScaleType(ImageView.ScaleType.FIT_XY);
         mIconView.setLayoutParams(params);
+        mIconView.setPadding(mIconPadding, mIconPadding, mIconPadding, mIconPadding);
         //添加进去主布局
         addView(mIconView);
         updateIcon();
@@ -276,7 +279,7 @@ public class JPTabItem extends BadgeRelativeLayout {
      */
     private void changeColorIfneed(boolean selected) {
         if (mAcceptFilter && mSelectIcon == null
-                ) {
+        ) {
             if (selected) {
                 mIconView.setColorFilter(mSelectColor);
             } else {
@@ -338,6 +341,7 @@ public class JPTabItem extends BadgeRelativeLayout {
 
     static class Builder {
         private int iconSize;
+        private int iconPadding;
         private int margin;
         private int selectColor;
         private int normalColor;
@@ -348,21 +352,21 @@ public class JPTabItem extends BadgeRelativeLayout {
         private int badgeVerMargin;
         private int badgeHorMargin;
         private int badgeTextSize;
-        private int badgepadding;
+        private int badgePadding;
         private Drawable selectbg;
         private String title;
         private Context context;
         private String typeFacepath;
         private int index;
         private boolean iconfilter;
-        private Animatable animater;
+        private Animatable animator;
 
         Builder(Context context) {
             this.context = context;
         }
 
-        Builder setAnimater(Animatable animater) {
-            this.animater = animater;
+        Builder setAnimator(Animatable animator) {
+            this.animator = animator;
             return this;
         }
 
@@ -373,6 +377,11 @@ public class JPTabItem extends BadgeRelativeLayout {
 
         Builder setIconSize(int size) {
             this.iconSize = size;
+            return this;
+        }
+
+        public Builder setIconPadding(int iconPadding) {
+            this.iconPadding = iconPadding;
             return this;
         }
 
@@ -396,8 +405,8 @@ public class JPTabItem extends BadgeRelativeLayout {
             return this;
         }
 
-        Builder setIconFilte(boolean acceptFilte) {
-            this.iconfilter = acceptFilte;
+        Builder setIconFilter(boolean acceptFilter) {
+            this.iconfilter = acceptFilter;
             return this;
         }
 
@@ -427,7 +436,7 @@ public class JPTabItem extends BadgeRelativeLayout {
         }
 
         Builder setBadgePadding(int padding) {
-            this.badgepadding = padding;
+            this.badgePadding = padding;
             return this;
         }
 
@@ -453,8 +462,8 @@ public class JPTabItem extends BadgeRelativeLayout {
 
         JPTabItem build() {
             JPTabItem item = new JPTabItem(context);
-            item.mTextSize = textSize
-            ;
+            item.mTextSize = textSize;
+            item.mIconPadding = iconPadding;
             item.mTitle = title;
             item.mNormalColor = normalColor;
             item.mSelectColor = selectColor;
@@ -462,7 +471,7 @@ public class JPTabItem extends BadgeRelativeLayout {
             item.mNormalIcon = context.getResources().getDrawable(normalIcon).mutate();
             if (selectIcon != 0)
                 item.mSelectIcon = context.getResources().getDrawable(selectIcon).mutate();
-            item.mBadgePadding = badgepadding;
+            item.mBadgePadding = badgePadding;
             item.mBadgeBackground = badgeBackground;
             item.mIndex = index;
             item.mBadgeHorMargin = badgeHorMargin;
@@ -471,7 +480,7 @@ public class JPTabItem extends BadgeRelativeLayout {
             item.mMargin = margin;
             item.mAcceptFilter = iconfilter;
             item.mSelectBg = selectbg;
-            item.mAnimater = animater;
+            item.mAnimater = animator;
             if (typeFacepath != null)
                 item.mTypeFace = Typeface.createFromAsset(context.getAssets(), typeFacepath);
             item.init(context);
