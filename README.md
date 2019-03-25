@@ -30,12 +30,15 @@
 # Usage:
 1.Introducing Gradle dependency
 ```
-    repositories {
-        jcenter()
-    }
+   allprojects {
+        repositories {
+           ...
+           maven { url "https://jitpack.io" }
+       }
+   }
 
     dependencies{
-        compile 'com.jpeng:JPTabBar:1.4.0'
+        implementation 'com.github.xuexiangjys:JPTabBar:1.0.0'
     }
 
 ```
@@ -48,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#fff"
-         jp:TabTextSize="12sp"
+         jp:tab_textSize="12sp"
         />
 ```
 3.In your main interface using an array of variables to declare an array of variables, the internal reflection to generate TabItem, attention is:NorIcons are required, the length of each array should be consistent
