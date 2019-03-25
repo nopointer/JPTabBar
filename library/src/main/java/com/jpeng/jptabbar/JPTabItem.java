@@ -19,10 +19,10 @@ import com.jpeng.jptabbar.badgeview.DragDismissDelegate;
 import com.nineoldandroids.animation.ObjectAnimator;
 
 /**
- * Author jpeng
- * Date: 16-11-13
- * E-mail:peng8350@gmail.com
  * TabBarItem类
+ *
+ * @author XUE
+ * @since 2019/3/25 17:18
  */
 public class JPTabItem extends BadgeRelativeLayout {
     //颜色渐变时间
@@ -87,7 +87,7 @@ public class JPTabItem extends BadgeRelativeLayout {
         mContext = context;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        params.weight = 3;
+        params.weight = 1;
         setLayoutParams(params);
         initPaint();
         initImageView();
@@ -181,18 +181,18 @@ public class JPTabItem extends BadgeRelativeLayout {
     }
 
     /**
-     * 得到字体的X轴坐标
+     * 得到字体的Y轴坐标
      */
     private float getTextY(Rect textBound, Paint.FontMetrics fontMetrics) {
         return (getMeasuredHeight() - mMargin - textBound.height() / 2f - fontMetrics.descent + (fontMetrics.descent - fontMetrics.ascent) / 2);
     }
 
-    Animatable getAnimater() {
+    Animatable getAnimator() {
         return mAnimater;
     }
 
-    void setAnimater(Animatable animater) {
-        mAnimater = animater;
+    void setAnimator(Animatable animator) {
+        mAnimater = animator;
     }
 
     /**
@@ -279,7 +279,7 @@ public class JPTabItem extends BadgeRelativeLayout {
      */
     private void changeColorIfneed(boolean selected) {
         if (mAcceptFilter && mSelectIcon == null
-        ) {
+                ) {
             if (selected) {
                 mIconView.setColorFilter(mSelectColor);
             } else {

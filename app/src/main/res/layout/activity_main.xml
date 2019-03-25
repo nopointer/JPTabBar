@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:jp="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
 
     <android.support.v4.view.ViewPager
@@ -15,12 +16,11 @@
     <com.jpeng.jptabbar.JPTabBar
         android:id="@+id/tabbar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/tab_bg"
-        jp:TabAnimate="Scale"
-        jp:TabMiddleView="@layout/view_mitem"
-        jp:TabIconPadding="2dp"/>
+        android:background="#F9F9F9"
+        jp:tab_animate="Scale"
+        jp:tab_middleView="@layout/view_mitem"/>
 
 
 </RelativeLayout>

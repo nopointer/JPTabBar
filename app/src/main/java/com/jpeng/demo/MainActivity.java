@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
     private static final int[] mTitles = {R.string.tab1,R.string.tab2,R.string.tab3,R.string.tab4};
 
     @SeleIcons
-    private static final int[] mSeleIcons = {R.mipmap.tab1_selected,R.mipmap.tab2_selected,R.mipmap.tab3_selected,R.mipmap.tab4_selected};
+    private static final int[] mSeleIcons = {R.drawable.nav_01_pre,R.drawable.nav_02_pre,R.drawable.nav_04_pre,R.drawable.nav_05_pre};
 
     @NorIcons
-    private static final int[] mNormalIcons = {R.mipmap.tab1_normal, R.mipmap.tab2_normal, R.mipmap.tab3_normal, R.mipmap.tab4_normal};
+    private static final int[] mNormalIcons = {R.drawable.nav_01_nor,R.drawable.nav_02_nor,R.drawable.nav_04_nor,R.drawable.nav_05_nor};
 
     private List<Fragment> list = new ArrayList<>();
 
@@ -71,17 +71,17 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
         mTabbar.setDismissListener(this);
         mTabbar.setTabListener(this);
         if(mTabbar.getMiddleView()!=null)
-        mTabbar.getMiddleView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"中间点击",Toast.LENGTH_SHORT).show();;
-            }
-        });
+            mTabbar.getMiddleView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MainActivity.this,"中间点击",Toast.LENGTH_SHORT).show();;
+                }
+            });
     }
 
     @Override
     public void onDismiss(int position) {
-            mTab1.clearCount();
+        mTab1.clearCount();
     }
 
 

@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="JPTabBar">
-        <attr name="TabNormalColor" format="reference|color"/>
-        <attr name="TabSelectColor" format="reference|color"/>
-        <attr name="TabSelectBg" format="reference|color"/>
-        <attr name="TabTextSize" format="dimension|reference"/>
-        <attr name="TabTypeface" format="string"/>
-        <attr name="TabIconSize" format="dimension|reference"/>
-        <attr name="TabIconPadding" format="dimension|reference"/>
-        <attr name="TabIconFilter" format="boolean"/>
-        <attr name="TabMargin" format="dimension|reference"/>
-        <attr name="TabAnimate" format="enum">
-            <enum name="Flip" value="0"/>
-            <enum name="Rotate" value="1"/>
-            <enum name="Scale" value="2"/>
-            <enum name="Jump" value="3"/>
-            <enum name="Scale2" value="4"/>
-            <enum name="None" value="5"/>
+        <attr name="tab_normalColor" format="reference|color" />
+        <attr name="tab_selectColor" format="reference|color" />
+        <attr name="tab_selectBg" format="reference|color" />
+        <attr name="tab_textSize" format="dimension|reference" />
+        <attr name="tab_typeface" format="string" />
+        <attr name="tab_iconSize" format="dimension|reference" />
+        <attr name="tab_iconPadding" format="dimension|reference" />
+        <attr name="tab_iconFilter" format="boolean" />
+        <attr name="tab_margin" format="dimension|reference" />
+        <attr name="tab_animate" format="enum">
+            <enum name="Flip" value="0" />
+            <enum name="Rotate" value="1" />
+            <enum name="Scale" value="2" />
+            <enum name="Jump" value="3" />
+            <enum name="Scale2" value="4" />
+            <enum name="None" value="5" />
         </attr>
-        <attr name="TabPressAnimateEnable" format="boolean"/>
-        <attr name="TabPageAnimateEnable" format="boolean"/>
-        <attr name="TabGradientEnable" format="boolean"/>
-        <attr name="TabMiddleBottomDis" format="dimension|reference"/>
-        <attr name="TabMiddleView" format="reference"/>
-        <attr name="TabMiddleHMargin" format="dimension|reference"/>
-        <attr name="BadgeColor" format="reference|color"/>
-        <attr name="BadgePadding" format="dimension|reference"/>
-        <attr name="BadgeTextSize" format="reference|dimension"/>
-        <attr name="BadgeVerticalMargin" format="reference|dimension"/>
-        <attr name="BadgeHorizonalMargin" format="reference|dimension"/>
+        <attr name="tab_pressAnimateEnable" format="boolean" />
+        <attr name="tab_pageAnimateEnable" format="boolean" />
+        <attr name="tab_gradientEnable" format="boolean" />
+        <attr name="tab_middleBottomDis" format="dimension|reference" />
+        <attr name="tab_middleView" format="reference" />
+        <attr name="tab_middleHMargin" format="dimension|reference" />
+        <attr name="tab_badgeColor" format="reference|color" />
+        <attr name="tab_badgePadding" format="dimension|reference" />
+        <attr name="tab_badgeTextSize" format="reference|dimension" />
+        <attr name="tab_badgeVerticalMargin" format="reference|dimension" />
+        <attr name="tab_badgeHorizontalMargin" format="reference|dimension" />
     </declare-styleable>
 </resources>
