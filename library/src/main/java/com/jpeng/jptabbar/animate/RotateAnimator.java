@@ -1,9 +1,8 @@
 package com.jpeng.jptabbar.animate;
 
+import android.animation.ObjectAnimator;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Author jpeng
@@ -11,7 +10,7 @@ import com.nineoldandroids.view.ViewHelper;
  * E-mail:peng8350@gmail.com
  * 实现旋转的动画类
  */
-public class RotateAnimater implements Animatable {
+public class RotateAnimator implements Animatable {
 
     @Override
     public void onPressDown(View v, boolean selected) {
@@ -26,15 +25,15 @@ public class RotateAnimater implements Animatable {
     @Override
     public void onSelectChanged(View v, boolean selected) {
         int end = selected ? 360 : 0;
-        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(v, "rotation",  end);
+        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(v, "rotation", end);
         rotateAnimator.setDuration(400);
         rotateAnimator.setInterpolator(new AnticipateInterpolator());
         rotateAnimator.start();
     }
 
     @Override
-    public void onPageAnimate(View v, float offset) {
-        ViewHelper.setRotation(v, offset * 360);
+    public void onPageAnimate(View view, float offset) {
+        view.setRotation(offset * 360);
     }
 
     @Override

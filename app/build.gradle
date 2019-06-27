@@ -27,5 +27,4 @@ android {
 dependencies {
     implementation project(':library')
     implementation deps.support.app_compat
-    implementation 'com.nineoldandroids:library:2.4.0'
 }

@@ -1,5 +1,6 @@
 package com.jpeng.jptabbar;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,11 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
 import com.jpeng.jptabbar.animate.Animatable;
 import com.jpeng.jptabbar.badgeview.BadgeRelativeLayout;
 import com.jpeng.jptabbar.badgeview.Badgeable;
 import com.jpeng.jptabbar.badgeview.DragDismissDelegate;
-import com.nineoldandroids.animation.ObjectAnimator;
 
 /**
  * TabBarItem类

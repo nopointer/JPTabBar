@@ -16,11 +16,16 @@
 
 package com.jpeng.jptabbar.badgeview;
 
-import android.graphics.*;
+import android.animation.ValueAnimator;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
+
 import com.jpeng.jptabbar.DensityUtils;
-import com.nineoldandroids.animation.ValueAnimator;
 
 import java.util.Random;
 

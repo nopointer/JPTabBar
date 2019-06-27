@@ -16,7 +16,6 @@ android {
 
 dependencies {
     compileOnly deps.support.app_compat
-    compileOnly 'com.nineoldandroids:library:2.4.0'
 }
 
 apply from: "../JitPackUpload.gradle"

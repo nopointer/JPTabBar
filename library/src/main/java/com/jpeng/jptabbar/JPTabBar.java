@@ -194,8 +194,8 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
             //实例化TabItem添加进去
             for (int i = 0; i < mJPTabItems.length; i++) {
                 final int temp = i;
-                Animatable animator = AnimateType == AnimationType.SCALE ? new ScaleAnimater() : AnimateType == AnimationType.ROTATE ? new RotateAnimater() :
-                        AnimateType == AnimationType.FLIP ? new FlipAnimater() : AnimateType == AnimationType.JUMP ? new JumpAnimater() : AnimateType == AnimationType.SCALE2 ? new Scale2Animater() : null;
+                Animatable animator = AnimateType == AnimationType.SCALE ? new ScaleAnimater() : AnimateType == AnimationType.ROTATE ? new RotateAnimator() :
+                        AnimateType == AnimationType.FLIP ? new FlipAnimator() : AnimateType == AnimationType.JUMP ? new JumpAnimator() : AnimateType == AnimationType.SCALE2 ? new Scale2Animator() : null;
                 mJPTabItems[i] = new JPTabItem.Builder(mContext).setTitle(mTitles == null ? null : mTitles[i]).setIndex(temp).setTextSize(textSize)
                         .setTypeFacePath(typeFacePath).setNormalColor(normalColor).setSelectBg(tabSelectBg).setBadgeColor(BadgeColor)
                         .setBadgeTextSize(BadgeTextSize).setNormalIcon(mNormalIcons[i]).setIconPadding(iconPadding).setSelectedColor(selectColor).setBadgeHorMargin(badgeHorMargin)
@@ -663,8 +663,8 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
      */
     public void setAnimation(AnimationType animationType) {
         for (int i = 0; i < mJPTabItems.length; i++) {
-            mJPTabItems[i].setAnimator(animationType == AnimationType.SCALE ? new ScaleAnimater() : animationType == AnimationType.ROTATE ? new RotateAnimater() :
-                    animationType == AnimationType.JUMP ? new JumpAnimater() : animationType == AnimationType.FLIP ? new FlipAnimater() : animationType == AnimationType.SCALE2 ? new Scale2Animater() : null);
+            mJPTabItems[i].setAnimator(animationType == AnimationType.SCALE ? new ScaleAnimater() : animationType == AnimationType.ROTATE ? new RotateAnimator() :
+                    animationType == AnimationType.JUMP ? new JumpAnimator() : animationType == AnimationType.FLIP ? new FlipAnimator() : animationType == AnimationType.SCALE2 ? new Scale2Animator() : null);
         }
     }
 
