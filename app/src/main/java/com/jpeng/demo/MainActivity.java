@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
 import com.jpeng.jptabbar.BadgeDismissListener;
 import com.jpeng.jptabbar.JPTabBar;
 import com.jpeng.jptabbar.OnTabSelectListener;
@@ -19,17 +21,9 @@ import java.util.List;
 import static com.jpeng.demo.R.id.tabbar;
 
 
-public class MainActivity extends AppCompatActivity implements BadgeDismissListener, OnTabSelectListener{
+public class MainActivity extends AppCompatActivity implements BadgeDismissListener, OnTabSelectListener, View.OnClickListener {
 
     @Titles
-    private static final int[] mTitles = {R.string.tab1,R.string.tab2,R.string.tab3,R.string.tab4};
-
-    @SeleIcons
-    private static final int[] mSeleIcons = {R.drawable.nav_01_pre,R.drawable.nav_02_pre,R.drawable.nav_04_pre,R.drawable.nav_05_pre};
-
-    @NorIcons
-    private static final int[] mNormalIcons = {R.drawable.nav_01_nor,R.drawable.nav_02_nor,R.drawable.nav_04_nor,R.drawable.nav_05_nor};
-
     private List<Fragment> list = new ArrayList<>();
 
     private ViewPager mPager;
@@ -52,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
         mPager = (ViewPager) findViewById(R.id.view_pager);
 //        mTabbar.setTitles("asd","页面二","页面三","页面四").setNormalIcons(R.mipmap.tab1_normal,R.mipmap.tab2_normal,R.mipmap.tab3_normal,R.mipmap.tab4_normal)
 //                .setSelectedIcons(R.mipmap.tab1_selected,R.mipmap.tab2_selected,R.mipmap.tab3_selected,R.mipmap.tab4_selected).generate();
-        mTabbar.setTabTypeFace("fonts/Jaden.ttf");
+//        mTabbar.setTabTypeFace("fonts/Jaden.ttf");
         mTab1 = new Tab1Pager();
         mTab2 = new Tab2Pager();
         mTab3 = new Tab3Pager();
@@ -65,18 +59,25 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
         list.add(mTab3);
         list.add(mTab4);
 
-        mPager.setAdapter(new Adapter(getSupportFragmentManager(),list));
-        mTabbar.setContainer(mPager);
+        mPager.setAdapter(new Adapter(getSupportFragmentManager(), list));
+//        mTabbar.setContainer(mPager);
         //设置Badge消失的代理
         mTabbar.setDismissListener(this);
         mTabbar.setTabListener(this);
-        if(mTabbar.getMiddleView()!=null)
+        if (mTabbar.getMiddleView() != null)
             mTabbar.getMiddleView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(MainActivity.this,"中间点击",Toast.LENGTH_SHORT).show();;
+                    Toast.makeText(MainActivity.this, "中间点击", Toast.LENGTH_SHORT).show();
+                    ;
                 }
             });
+
+        findViewById(R.id.btn1).setOnClickListener(this);
+        findViewById(R.id.btn2).setOnClickListener(this);
+        findViewById(R.id.btn3).setOnClickListener(this);
+
+        style1();
     }
 
     @Override
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
 
     @Override
     public void onTabSelect(int index) {
-        Toast.makeText(MainActivity.this,"choose the tab index is "+index,Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "choose the tab index is " + index, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -101,6 +102,56 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
 
     public JPTabBar getTabbar() {
         return mTabbar;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn1:
+                style1();
+                break;
+            case R.id.btn2:
+                style2();
+                break;
+            case R.id.btn3:
+                style3();
+                break;
+        }
+    }
+
+    private void style1() {
+        log("ECG图标");
+        mTabbar.resetClear();
+//        invoke(true);
+        mTabbar.setNormalIcons(R.mipmap.nav_ecg_health_unselect, R.mipmap.nav_device_ecg_unselect, R.mipmap.nav_ecg_mine_unselect);
+        mTabbar.setSelectedIcons(R.mipmap.nav_ecg_health_select, R.mipmap.nav_device_ecg_select, R.mipmap.nav_ecg_mine_select);
+        mTabbar.setTitles(R.string.EMPTY, R.string.EMPTY, R.string.EMPTY);
+        mTabbar.generate();
+    }
+
+    private void style2() {
+        log("戒指图标");
+        mTabbar.resetClear();
+//        invoke(true);
+        mTabbar.setNormalIcons(R.mipmap.nav_health_unselect, R.mipmap.nav_sleep_unselect, R.mipmap.nav_device_ring_unselect, R.mipmap.nav_mine_unselect);
+        mTabbar.setSelectedIcons(R.mipmap.nav_health_select, R.mipmap.nav_sleep_select, R.mipmap.nav_device_ring_select, R.mipmap.nav_mine_select);
+        mTabbar.setTitles(R.string.EMPTY, R.string.EMPTY, R.string.EMPTY, R.string.EMPTY);
+        mTabbar.generate();
+    }
+
+    private void style3() {
+        log("手表图标");
+        mTabbar.resetClear();
+//        invoke(true);
+        mTabbar.setNormalIcons(R.mipmap.nav_health_unselect, R.mipmap.nav_sport_unselect, R.mipmap.nav_device_unselect, R.mipmap.nav_mine_unselect);
+        mTabbar.setSelectedIcons(R.mipmap.nav_health_select, R.mipmap.nav_sport_select, R.mipmap.nav_device_select, R.mipmap.nav_mine_select);
+        mTabbar.setTitles(R.string.EMPTY, R.string.EMPTY, R.string.EMPTY, R.string.EMPTY);
+        mTabbar.generate();
+    }
+
+    public static void log(String msg) {
+        Log.e("TAG", msg);
     }
 
 

@@ -5,22 +5,50 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+    <LinearLayout
+        android:id="@+id/refTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="样式1" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="样式2" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="样式3" />
+    </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/refTop"
         android:layout_marginBottom="48dp" />
 
 
     <com.jpeng.jptabbar.JPTabBar
         android:id="@+id/tabbar"
+        android:paddingTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:background="#F9F9F9"
-        jp:tab_animate="Scale"
-        jp:tab_middleView="@layout/view_mitem"/>
+        jp:tab_animate="None" />
 
 
 </RelativeLayout>
