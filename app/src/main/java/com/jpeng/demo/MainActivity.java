@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
         findViewById(R.id.btn2).setOnClickListener(this);
         findViewById(R.id.btn3).setOnClickListener(this);
 
-        style1();
+//        style1();
     }
 
     @Override
