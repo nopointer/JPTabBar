@@ -7,6 +7,9 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion build_versions.target_sdk
+
+        versionCode 10
+        versionName "1.0.2"
     }
 
     lintOptions {

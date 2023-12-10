@@ -56,5 +56,20 @@
       <option name="name" value="maven4" />
       <option name="url" value="file:/$PROJECT_DIR$/library/LocalRepository" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="file:$PROJECT_DIR$/LocalRepository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="file:$PROJECT_DIR$/app/LocalRepository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="file:$PROJECT_DIR$/library/LocalRepository" />
+    </remote-repository>
   </component>
 </project>

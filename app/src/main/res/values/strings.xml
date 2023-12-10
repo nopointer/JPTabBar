@@ -5,5 +5,5 @@
     <string name="tab3">活动</string>
     <string name="tab4">设置</string>
 
-    <string name="EMPTY"></string>
+    <string name="EMPTY">Nav</string>
 </resources>

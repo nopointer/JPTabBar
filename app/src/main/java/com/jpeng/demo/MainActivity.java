@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.jpeng.jptabbar.BadgeDismissListener;
 import com.jpeng.jptabbar.JPTabBar;
+import com.jpeng.jptabbar.JPTabItem;
 import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
@@ -126,8 +127,19 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
 //        invoke(true);
         mTabbar.setNormalIcons(R.mipmap.nav_ecg_health_unselect, R.mipmap.nav_device_ecg_unselect, R.mipmap.nav_ecg_mine_unselect);
         mTabbar.setSelectedIcons(R.mipmap.nav_ecg_health_select, R.mipmap.nav_device_ecg_select, R.mipmap.nav_ecg_mine_select);
+
         mTabbar.setTitles(R.string.EMPTY, R.string.EMPTY, R.string.EMPTY);
         mTabbar.generate();
+
+        mTabbar.setIconSize(20);
+        mTabbar.setIconSize(25,0);
+
+        mTabbar.setTabMargin(10);
+
+//        for (JPTabItem jpTabItem : mTabbar.getJPTabItems()) {
+//            jpTabItem.setPadding(20, 20, 20, 20);
+//        }
+//        mTabbar.getSelectedTab().setPadding(0, 0, 0, 0);
     }
 
     private void style2() {

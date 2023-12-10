@@ -9,6 +9,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.support.annotation.DrawableRes;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -129,14 +131,18 @@ public class JPTabItem extends BadgeRelativeLayout {
      */
     private void initImageView() {
         mIconView = new ImageView(mContext);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                mIconSize, mIconSize);
-        params.addRule(mTitle == null ? RelativeLayout.CENTER_IN_PARENT : RelativeLayout.CENTER_HORIZONTAL);
-        if (mTitle != null)
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(mIconSize, mIconSize);
+        params.addRule(TextUtils.isEmpty(mTitle) ? RelativeLayout.CENTER_IN_PARENT : RelativeLayout.CENTER_HORIZONTAL);
+        if (!TextUtils.isEmpty(mTitle))
             params.topMargin = mMargin;
-        mIconView.setScaleType(ImageView.ScaleType.FIT_XY);
-        mIconView.setLayoutParams(params);
+
+        Log.e("TAG", "params.topMargin = " + params.topMargin);
+//        mIconView.setScaleType(ImageView.ScaleType.FIT_XY);
         mIconView.setPadding(mIconPadding, mIconPadding, mIconPadding, mIconPadding);
+        mIconView.setLayoutParams(params);
+
+        mIconView.setBackgroundColor(0xFF999999);
+
         //添加进去主布局
         addView(mIconView);
         updateIcon();
@@ -280,7 +286,7 @@ public class JPTabItem extends BadgeRelativeLayout {
      */
     private void changeColorIfneed(boolean selected) {
         if (mAcceptFilter && mSelectIcon == null
-                ) {
+        ) {
             if (selected) {
                 mIconView.setColorFilter(mSelectColor);
             } else {

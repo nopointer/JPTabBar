@@ -43,11 +43,11 @@
 
     <com.jpeng.jptabbar.JPTabBar
         android:id="@+id/tabbar"
-        android:paddingTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:background="#F9F9F9"
+        jp:tab_textSize="12sp"
         jp:tab_animate="None" />
 
 

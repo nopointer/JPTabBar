@@ -599,6 +599,17 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
         }
     }
 
+
+    /**
+     * 改变图标大小
+     */
+    public void setIconSize(int size, int position) {
+        if (mJPTabItems != null) {
+            mJPTabItems[position].getIconView().getLayoutParams().width = DensityUtils.dp2px(mContext, size);
+            mJPTabItems[position].getIconView().getLayoutParams().height = DensityUtils.dp2px(mContext, size);
+        }
+    }
+
     /**
      * 改变TabBar上边距
      */
@@ -607,6 +618,15 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
             for (JPTabItem item : mJPTabItems) {
                 ((RelativeLayout.LayoutParams) item.getIconView().getLayoutParams()).topMargin = DensityUtils.dp2px(mContext, margin);
             }
+        }
+    }
+
+    /**
+     * 改变TabBar上边距
+     */
+    public void setTabMargin(int margin, int position) {
+        if (mJPTabItems != null) {
+            ((RelativeLayout.LayoutParams) mJPTabItems[position].getIconView().getLayoutParams()).topMargin = DensityUtils.dp2px(mContext, margin);
         }
     }
 
@@ -816,5 +836,8 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
     }
 
 
+    public JPTabItem[] getJPTabItems() {
+        return mJPTabItems;
+    }
 }
 
