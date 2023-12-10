@@ -123,18 +123,47 @@ public class MainActivity extends AppCompatActivity implements BadgeDismissListe
 
     private void style1() {
         log("ECG图标");
-        mTabbar.resetClear();
+//        mTabbar.resetClear();
 //        invoke(true);
         mTabbar.setNormalIcons(R.mipmap.nav_ecg_health_unselect, R.mipmap.nav_device_ecg_unselect, R.mipmap.nav_ecg_mine_unselect);
         mTabbar.setSelectedIcons(R.mipmap.nav_ecg_health_select, R.mipmap.nav_device_ecg_select, R.mipmap.nav_ecg_mine_select);
-
         mTabbar.setTitles(R.string.EMPTY, R.string.EMPTY, R.string.EMPTY);
-        mTabbar.generate();
+//        mTabbar.generate();
 
-        mTabbar.setIconSize(20);
-        mTabbar.setIconSize(25,0);
+//        mTabbar.setTabMargin(10);
 
-        mTabbar.setTabMargin(10);
+        mTabbar.forceInvalidate();
+
+        mTabbar.setTabMargin(12);
+        mTabbar.setIconSize(10);
+
+        mTabbar.setTabMargin(6, 0);
+        mTabbar.setIconSize(25, 0);
+
+        mTabbar.setSelectTab(0,false);
+        mTabbar.setTabListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int index) {
+
+                Log.e("Tag", "index = " + index);
+                mTabbar.forceInvalidate();
+
+                mTabbar.setTabMargin(12);
+                mTabbar.setIconSize(10);
+
+                mTabbar.setTabMargin(6, index);
+                mTabbar.setIconSize(25, index);
+
+                mTabbar.setSelectTab(index,false);
+//                mTabbar.setSelectTab(index);
+            }
+
+            @Override
+            public boolean onInterruptSelect(int index) {
+                return false;
+            }
+        });
+
 
 //        for (JPTabItem jpTabItem : mTabbar.getJPTabItems()) {
 //            jpTabItem.setPadding(20, 20, 20, 20);

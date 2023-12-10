@@ -253,8 +253,7 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
             for (int i = 1; i < mJPTabItems.length; i++) {
                 mJPTabItems[i].setSelect(false, false);
             }
-            mJPTabItems[0].setSelect(true, true, false);
-
+//            mJPTabItems[0].setSelect(true, true, false);
         }
     }
 
@@ -262,7 +261,7 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
     /**
      * 切换Tab页面,是否带动画
      */
-    private void setSelectTab(int index, boolean animated) {
+    private void setSelectTab(int index, boolean animated, boolean invokeCallback) {
         if (mJPTabItems == null || index > mJPTabItems.length - 1) return;
         mSelectIndex = index;
         for (int i = 0; i < mJPTabItems.length; i++) {
@@ -276,7 +275,7 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
             }
         }
         mJPTabItems[index].setSelect(true, animated);
-        if (mTabSelectLis != null) {
+        if (invokeCallback && mTabSelectLis != null) {
             mTabSelectLis.onTabSelect(index);
         }
     }
@@ -382,7 +381,14 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
      * 切换Tab页面
      */
     public void setSelectTab(int index) {
-        setSelectTab(index, true);
+        setSelectTab(index, false);
+    }
+
+    /**
+     * 切换Tab页面
+     */
+    public void setSelectTab(int index, boolean invoke) {
+        setSelectTab(index, true, invoke);
     }
 
     /**
@@ -595,6 +601,7 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
             for (JPTabItem item : mJPTabItems) {
                 item.getIconView().getLayoutParams().width = DensityUtils.dp2px(mContext, size);
                 item.getIconView().getLayoutParams().height = DensityUtils.dp2px(mContext, size);
+                item.getIconView().invalidate();
             }
         }
     }
@@ -607,6 +614,7 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
         if (mJPTabItems != null) {
             mJPTabItems[position].getIconView().getLayoutParams().width = DensityUtils.dp2px(mContext, size);
             mJPTabItems[position].getIconView().getLayoutParams().height = DensityUtils.dp2px(mContext, size);
+            mJPTabItems[position].getIconView().invalidate();
         }
     }
 
@@ -779,6 +787,7 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
     public boolean onTouch(View v, MotionEvent event) {
         int temp = (int) v.getTag();
         JPTabItem tabItem = (JPTabItem) v;
+        Log.e("tagSb", "tabItem.isSelect() = " + tabItem.isSelect());
         if (tabItem.isSelect()) {
             return false;
         }
@@ -807,7 +816,7 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
                     } else if (mTabPager != null && mTabPager.getAdapter() != null && mTabPager.getAdapter().getCount() <= mJPTabItems.length) {
                         mNeedAnimate = true;
                         mTabPager.setCurrentItem(temp, false);
-                        setSelectTab(temp);
+                        setSelectTab(temp, true);
                     } else {
                         setSelectTab(temp, true);
                     }
@@ -838,6 +847,16 @@ public class JPTabBar extends LinearLayout implements ViewPager.OnPageChangeList
 
     public JPTabItem[] getJPTabItems() {
         return mJPTabItems;
+    }
+
+    public void forceInvalidate() {
+//        if (mJPTabItems != null) {
+//            for (JPTabItem item : mJPTabItems) {
+//                item.setSelect(false, false);
+//            }
+//        }
+        removeAllViews();
+        createItems();
     }
 }
 

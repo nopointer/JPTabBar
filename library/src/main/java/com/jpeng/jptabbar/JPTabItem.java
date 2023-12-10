@@ -137,11 +137,11 @@ public class JPTabItem extends BadgeRelativeLayout {
             params.topMargin = mMargin;
 
         Log.e("TAG", "params.topMargin = " + params.topMargin);
-//        mIconView.setScaleType(ImageView.ScaleType.FIT_XY);
+        mIconView.setScaleType(ImageView.ScaleType.FIT_XY);
         mIconView.setPadding(mIconPadding, mIconPadding, mIconPadding, mIconPadding);
         mIconView.setLayoutParams(params);
 
-        mIconView.setBackgroundColor(0xFF999999);
+//        mIconView.setBackgroundColor(0xFF999999);
 
         //添加进去主布局
         addView(mIconView);
